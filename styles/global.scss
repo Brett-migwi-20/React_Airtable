@@ -1,0 +1,459 @@
+*{
+    margin: 0em;
+    padding: 0em;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgba(156, 156, 156, 0.096) !important;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+// Custom Colors 
+$site_green : rgb(0, 136, 122);
+$site_blue  : #77A6F7;
+$site_white : #fff;
+$site_gray  : #D3E3FC;
+$border_color : rgba(128, 128, 128, 0.658);
+
+// Custom scroll bar
+
+@mixin  scroll {
+    /* width */
+ &::-webkit-scrollbar {
+    width: 7px;
+    height: 5px;
+    
+  }
+  
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $border_color;
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background:$site_blue;
+  }
+}
+
+
+
+// Custom flex styles
+@mixin flex($num) {
+    display:  flex;
+    @if $num == 1 {
+        justify-content: center;
+    }
+    @if $num == 2 {
+        align-items: center;
+    }
+    @if $num == 3 {
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+
+// Nav bar styles
+nav{
+    height: 5em;
+    background-color: #0b61f5;
+    color: white;
+
+    .nav-bar-container{
+        padding-top: 1em;
+        height: 3.3em;
+        // background-color: aqua;
+        @include flex(3);
+
+        .nav-project-name{
+            width: 20em;
+            height: 2em;
+            @include flex(3);
+             
+            &>p{
+                padding-top: 1.2em;
+                padding-left: 0.5em;
+            }
+
+        }
+    }
+    .nav-bar-container-bottom{
+        .nav-tab{
+            width: 13em;
+            height: 1.7em;
+            background-color: #fff;
+            margin-left: 2rem;
+            border-top-left-radius:5px ;
+            border-top-right-radius: 5px;
+            color: black;
+            @include flex(3);
+        }
+    }
+}
+.nav-setting-container{
+    height: 2em;
+    background-color: white;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.658);
+
+   .nav-settting-field{
+       @include flex(2);
+       padding-left: 2em;
+       height: 2em;
+        
+       .field-tabs{
+           min-width: 6em;
+           text-align: center;
+           border-radius: 5px;
+           cursor: pointer;
+           margin: 0em 1em;
+           @include flex(3);
+
+           .field-icon{
+               margin-right: 0.2em;
+           }
+           .field-name{
+               font-size: 14px;
+              
+           }
+
+           &:hover{
+               background-color: rgba(177, 174, 174, 0.274);
+           }
+
+       }
+   }
+}
+
+
+// Table Styles components
+.main-table-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    min-height: 85vh;
+
+    .main-table-sidebar{
+        // background-color: aqua;
+        border-right: 2px solid  $border_color;
+    }
+    .main-table-section{
+
+       .overflow-container{
+         overflow-x: scroll;
+         overflow-y: hidden;
+         height: 80vh;
+         white-space: nowrap; 
+         @include scroll();
+    }
+}
+}
+
+// Main table styles 
+.main-table-top-section{
+    height: 2em;
+   
+
+   
+    .main-tab-field-select{
+         width: 4em;
+         height: 2em;
+         background-color: aqua;
+         display: inline-block;
+    }
+    .main-tab-muilt-field{
+       
+        display: inline-block;
+       
+        
+         .grid-box{
+             display: grid;
+             grid-template-columns: 80% 20%;
+         }
+
+       
+        .main-tab-field{
+            width: 15em ;
+            height: 2em;
+            background-color: rgba(190, 186, 186, 0.411);
+            display: inline-block;
+            text-align: center;
+            padding-top: 0.2em;
+            border-right: 1px solid $border_color;
+
+            .main-tab-field-icon{
+                display:inline-block;
+                padding-right: 0.2em;
+            
+            }
+            .main-tab-field-name{
+                font-size: 14px;
+                display:inline-block;
+
+            }
+        }
+        .main-tab-bottom-field{
+            
+        }
+    }
+}
+
+
+// Drop down utility
+.drop-parent{
+    position: relative;
+    .dropdown-icon{
+        cursor: pointer;
+    }
+
+    .drop-list-box{
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.822);
+        width: 12em;
+        padding: 0em !important;
+        left: -9em;
+        border-radius: 3px;
+        
+
+        .list-list{
+            height: 3em;
+            color: rgba(255, 255, 255, 0.87);
+            list-style: none;
+            text-align: center;
+            @include flex(2);
+            cursor: pointer;
+            font-size: 10px;
+
+            .list-icon{
+                display: inline-block;
+                width: 4em;
+                height: 3em;
+                text-align: center;
+                
+                
+            }
+
+            .list-name{
+                font-size: 14px;
+                text-transform: capitalize;
+            }
+
+
+            &:hover{
+                background-color: rgba(83, 83, 83, 0.445);
+            }
+           
+        }
+    }
+}
+
+
+
+// Projects rows styles
+.project-list-row,
+.addComponent_top{
+    overflow-x: hidden;
+    white-space: nowrap; 
+    @include scroll();
+    min-width: 100vw;
+    display: inline-block;
+    border-bottom: 1px solid $border_color;
+    
+
+    .project-inner-shell,.top-top{
+        display: inline-block;
+        border-right: 1px solid $border_color;
+       
+        .project-input{
+            width: 15em;
+            height: 7em;
+            display: inline-block;
+
+            &::placeholder{
+                // background-color: ;
+            }
+
+        }
+    }
+}
+
+
+
+
+
+// Btn add rows 
+    .btn-add-row{
+       position: absolute;
+       width: 1.4em;
+       height:1.4em;
+       background-color: #0b61f5;
+       border-radius: 50%;
+       color: white;
+       @include flex(3);
+       font-size: 20px;
+       bottom: 1.5em;
+       cursor: pointer;
+       transition: ease-in-out 0.6s;
+
+       &:hover{
+           background-color: white;
+           color: #0b61f5;
+           border: 1px solid #0b61f5;
+       }
+    }
+
+
+    .row-counter{
+        position: absolute;
+        bottom: 1.5em;
+        min-width: 5em;
+        height: 2em;
+        border-radius: 5px;
+        background-color: #D3E3FC;
+        padding: 0em 0.5em;
+        left: 16em;
+        @include flex(3);
+    }
+
+// Input values
+.input_value{
+    width: 90%;
+    border: none;
+    outline: none;
+    height: 7em;
+    margin-left: 1.5em;
+    background-color:#F5F5F5 ;
+    
+
+    &:focus{
+          border-left: 4px solid #0b61f5;
+          border-top: 4px solid #0b61f5;
+          border-bottom: 4px solid #0b61f5;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          background-color: white;
+    }
+}
+
+.btn-container{
+    overflow-y: scroll;
+    display: inline-block;
+    white-space: nowrap;
+    @include scroll();
+    height: 80vh;
+}
+
+
+
+
+// Date styles
+.date-box{
+    width: 99%;
+    height: 7em;
+    border: none;
+    outline: none;
+    background-color:#F5F5F5 ;
+    
+
+    &:focus{
+          border: 4px solid #0b61f5;
+          border-radius: 5px;
+          background-color: white;
+    }
+
+}
+
+
+.loading-container{
+    width: 400em;
+    height: 70vh;
+    color:#0b61f5 ;
+
+    }
+.select{
+    width: 13.3em;
+    background-color:#F5F5F5 ;
+    
+}
+.relative{
+    position: relative;
+}
+.move_up{
+    width: 15em !important;
+   position: absolute !important;
+   border: none !important;
+   outline: none !important;
+   background-color: #F5F5F5 !important;
+}
+
+
+
+
+// upload
+
+.addComponent_top{
+         overflow-x: scroll;
+         overflow-y: hidden;
+         height: 15em;
+         white-space: nowrap; 
+         @include scroll();
+         background-color: rgba(190, 186, 186, 0.411);
+         padding-top: 3em;
+         margin-bottom: 5em;
+       
+    
+    //  position: relative;
+    
+
+    .top-top{
+        width: 4em;
+         height: 2em;
+        //  background-color: aqua;
+         display: inline-block;
+         
+       
+       
+        .items-box{
+            width: 15em;
+            height: 7em;
+            display: inline-block;
+            border: none;
+            outline: none;
+            background-color:#F5F5F5 ;
+            border-right:  1px solid gray ;
+
+            &:focus{
+                border: 4px solid #0b61f5;
+                border-radius: 5px;
+                background-color: white;
+          }
+      
+
+            &::placeholder{
+                // background-color: ;
+            }
+
+        }
+    }
+
+    // 
+}
+
+
+.top-bottom{
+    width: 10em;
+    height: 5em;
+    // background-color: #f52e0b;
+    position: absolute;
+    top:36.4em;
+    @include flex(3);
+    left: 20em;
+}
