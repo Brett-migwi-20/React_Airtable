@@ -504,4 +504,26 @@ nav .nav-bar-container-bottom .nav-tab {
           align-items: center;
   left: 20em;
 }
+
+.uniquie {
+  position: relative;
+  top: -2.8em;
+  text-align: center;
+}
+
+.items-box > input::-webkit-input-placeholder {
+  padding-left: 1em;
+}
+
+.items-box > input:-ms-input-placeholder {
+  padding-left: 1em;
+}
+
+.items-box > input::-ms-input-placeholder {
+  padding-left: 1em;
+}
+
+.items-box > input::placeholder {
+  padding-left: 1em;
+}
 /*# sourceMappingURL=global.css.map */

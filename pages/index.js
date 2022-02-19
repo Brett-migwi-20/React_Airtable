@@ -21,3 +21,5 @@ export default function Home() {
     </div>
   )
 }
+
+console.log(process.env.NODE_ENV)

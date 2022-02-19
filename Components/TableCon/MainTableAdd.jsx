@@ -72,28 +72,27 @@ const [toggle, settoggle] = useState(false)
                 <input type="text" name="" id="" ref={nameRef} className="items-box" placeholder='Enter Name'/>
            </div>
            <div className="items-box names_box">
-           <select className='input_value select' ref={categoryRef} >
-                              <option value=""></option>
-                              <option value="Brand identities">Brand identities</option>
+           <select className='input_value select' ref={categoryRef} placeholder="select from the options..." >
+                              <option selected value="Brand identities">Brand identities</option>
                               <option value="Industrial design">Industrial design</option>
                               <option value="Healthcare design">Healthcare design</option>
                               <option value="Technology design">Technology design</option>
                           </select>
            </div>
-           <div className="items-box names_box">
-                <input type="checkbox" name="" id="" ref={completeRef} />
+           <div className="items-box names_box uniquie">
+                <input type="checkbox" name="" id="" ref={completeRef} placeholder="checkbox..." />
            </div>
            <div className="items-box names_box">
-                <input type="text" name="" id="" ref={projectImagesRef} className="items-box"/>
+                <input type="text" name="" id="" ref={projectImagesRef} className="items-box" placeholder='Upload ur Image..'/>
            </div>
            <div className="items-box names_box">
-                <input type="text" name="" id=""  className="items-box"/>
+                <input type="text" name="" id=""  className="items-box" placeholder='clients ...'/>
+           </div> 
+           <div className="items-box names_box">
+                <input type="text" name="" id=""  className="items-box" placeholder='project leads...'/>
            </div>
            <div className="items-box names_box">
-                <input type="text" name="" id=""  className="items-box"/>
-           </div>
-           <div className="items-box names_box">
-           <DatePicker selected={(DueDateRef == "")?"":DueDateRef} onChange={(date) => setDueDateRef(date)} className="input_value"/>
+           <DatePicker selected={(DueDateRef == "")?"":DueDateRef} onChange={(date) => setDueDateRef(date)} className="input_value" placeholder="kickoff date"/>
            </div>
            <div className="items-box names_box">
            <DatePicker selected={(kickoffDateRef == "")?"":kickoffDateRef} onChange={(date) => setkickoffDateRef(date)} className="input_value"/>
@@ -110,7 +109,7 @@ const [toggle, settoggle] = useState(false)
            </div>
        </div>
        <div className="addComponent_bottom">
-       <div className="btn-add-row" onClick={ToggleHandler} >+</div>
+       <div className="btn-add-row" onClick={ToggleHandler} >{(toggle == false)?"+":"x"}</div>
     </div>
     </div>
   )

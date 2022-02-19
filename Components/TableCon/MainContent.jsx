@@ -38,7 +38,7 @@ export default function MainContent() {
                       {/* Name Section start */}
                       <div className="project-inner-shell">
                           <div className="project-input" >
-                              <input type="text" name="" id="" value={tab.fields.Name} className="input_value" />
+                              <input type="text" name="" id="" placeholder={tab.fields.Name} className="input_value" />
                            </div>    
                       </div>
                       {/* Name Section start */} 
