@@ -11,8 +11,8 @@ const [toggle, settoggle] = useState(false)
   const projectImagesRef = useRef();
   const clientRef = useRef();
   const projectLeadRef = useRef();
-  const [kickoffDateRef,setkickoffDateRef] = useState();
-  const [DueDateRef,setDueDateRef] = useState();
+  const [kickoffDateRef,setkickoffDateRef] = useState("");
+  const [DueDateRef,setDueDateRef] = useState("");
   const NotesRef = useRef();
   const TaskRef = useRef();
 
@@ -43,8 +43,8 @@ const [toggle, settoggle] = useState(false)
                     "client": [
                         "rec91i6hUfAkDZNUQ"
                     ],
-                    "Kickoff date": kickoffDateRef.toISOString().slice(0, 10),
-                    "Due date": DueDateRef.toISOString().slice(0, 10),
+                    "Kickoff date": (kickoffDateRef == "")? undefined:kickoffDateRef.toISOString().slice(0, 10),
+                    "Due date": (DueDateRef == "")?undefined:DueDateRef.toISOString().slice(0, 10),
                     "Task": Task,
                 }
             }
@@ -73,11 +73,11 @@ const [toggle, settoggle] = useState(false)
            </div>
            <div className="items-box names_box">
            <select className='input_value select' ref={categoryRef} placeholder="select from the options..." >
-                              <option selected value="Brand identities">Brand identities</option>
-                              <option value="Industrial design">Industrial design</option>
-                              <option value="Healthcare design">Healthcare design</option>
-                              <option value="Technology design">Technology design</option>
-                          </select>
+                <option selected value="Brand Identities">Brand identity</option>
+                <option value="Industrial design">Industrial design</option>
+                <option value="Healthcare design">Healthcare design</option>
+                <option value="Technology design">Technology design</option>
+           </select>
            </div>
            <div className="items-box names_box uniquie">
                 <input type="checkbox" name="" id="" ref={completeRef} placeholder="checkbox..." />
@@ -105,7 +105,7 @@ const [toggle, settoggle] = useState(false)
            </div>
            </div>
            <div className="top-bottom">
-               <div onClick={addHandler} className="btn btn-primary">Apply</div>
+               <div onClick={(e) => {addHandler(e);}}className="btn btn-primary">Apply</div>
            </div>
        </div>
        <div className="addComponent_bottom">

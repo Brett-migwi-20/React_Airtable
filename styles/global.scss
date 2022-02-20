@@ -108,6 +108,8 @@ nav{
        @include flex(2);
        padding-left: 2em;
        height: 2em;
+       overflow-x: scroll;
+       @include scroll();
         
        .field-tabs{
            min-width: 6em;

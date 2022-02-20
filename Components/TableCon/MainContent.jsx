@@ -26,6 +26,27 @@ export default function MainContent() {
         fetchNextPage();
       });
   }, []);
+ 
+    const RecordHandler = (e,id,nameField,ValueType) => {
+          
+
+            
+            table.update([{
+                  "id":id,
+                  "fields": {
+                    [nameField]:e.target.value
+                  }
+            }], function(err, records) {
+              if (err) {
+                console.error(err);
+                return;
+              }
+              records.forEach(function(record) {
+                console.log(record.get(nameField));
+              });
+            });
+
+    }  
    
   return (
     <div className='btn-container'>
@@ -38,18 +59,20 @@ export default function MainContent() {
                       {/* Name Section start */}
                       <div className="project-inner-shell">
                           <div className="project-input" >
-                              <input type="text" name="" id="" placeholder={tab.fields.Name} className="input_value" />
+                              <input type="text" name="" id="" placeholder={tab.fields.Name}
+                                                               className="input_value"
+                                                               onChange={(e) => RecordHandler(e,tab.id,'Name') } />
                            </div>    
                       </div>
                       {/* Name Section start */} 
                       {/* Name Section start */}
                       <div className="project-inner-shell">
                           <div className="project-input">
-                          <select className='input_value select' >
+                          <select className='input_value select' onChange={(e) => RecordHandler(e,tab.id,"category")} >
                               <option value=""></option>
-                              <option selected={(tab.fields.category == "Brand identity")?tab.fields.category:null} value="Brand identity">Brand identity</option>
+                              <option selected={(tab.fields.category == "Brand Identities")?tab.fields.category:null} value="Brand Identities">Brand Identities</option>
                               <option value="Industrial design">Industrial design</option>
-                              <option value="Helthcare design">Helthcare design</option>
+                              <option value="Healthcare design">Healthcare design</option>
                               <option value="Technology design">Technology design</option>
                           </select>
                           </div>
@@ -59,7 +82,8 @@ export default function MainContent() {
                       <div className="project-inner-shell ">
                         <div className="project-input ">
                         <div className="input_value">
-                        <input type="checkbox" name="" id="" checked={(tab.fields.complete == true)}/></div>
+                        <input type="checkbox" name="" id="" checked={(tab.fields.complete == true)} 
+                                                             onChange={(e) => RecordHandler(e,tab.id,"complete") }/></div>
                         </div>
                       </div>
                       {/* Complete  end */}
@@ -67,7 +91,8 @@ export default function MainContent() {
                       {/* images  start */}
                       <div className="project-inner-shell">
                         <div className="project-input">
-                        <input type="text" name="" id="" value={tab.fields.Name} className="input_value" />
+                        <input type="text" name="" id="" className="input_value"
+                                                          />
                         </div>
                       </div>
                       {/* Cimages end */}
@@ -75,7 +100,7 @@ export default function MainContent() {
                       {/* client  start */}
                       <div className="project-inner-shell">
                         <div className="project-input relative">
-                         <Select options={options} isMulti={true} className="move_up" /> 
+                         <Select options={options} isMulti={true} className="move_up" onChange={(e) => RecordHandler} /> 
                         </div>
                       </div>
                       {/* Cclient end */}

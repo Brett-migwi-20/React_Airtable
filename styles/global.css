@@ -84,6 +84,30 @@ nav .nav-bar-container-bottom .nav-tab {
           align-items: center;
   padding-left: 2em;
   height: 2em;
+  overflow-x: scroll;
+  /* width */
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+
+.nav-setting-container .nav-settting-field::-webkit-scrollbar {
+  width: 7px;
+  height: 5px;
+}
+
+.nav-setting-container .nav-settting-field::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 10px;
+}
+
+.nav-setting-container .nav-settting-field::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.658);
+  border-radius: 10px;
+}
+
+.nav-setting-container .nav-settting-field::-webkit-scrollbar-thumb:hover {
+  background: #77A6F7;
 }
 
 .nav-setting-container .nav-settting-field .field-tabs {
