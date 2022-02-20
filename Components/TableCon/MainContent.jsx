@@ -27,26 +27,34 @@ export default function MainContent() {
       });
   }, []);
  
-    const RecordHandler = (e,id,nameField,ValueType) => {
-          
 
-            
+      //  Dyanmic Function that updates  the field forms
+    const RecordHandler = (e,id,nameField,ValueType = "no value") => {
+                     console.log(e);
             table.update([{
                   "id":id,
                   "fields": {
-                    [nameField]:e.target.value
+                    [nameField]:(ValueType == "no value")?e.target.value:e.target.checked  // Changes with the needs of the Action
                   }
             }], function(err, records) {
               if (err) {
                 console.error(err);
                 return;
-              }
-              records.forEach(function(record) {
-                console.log(record.get(nameField));
-              });
-            });
-
+              }});
     }  
+
+    const RecordHandleDates = (date,id,fieldName) => {
+      table.update([{
+        "id":id,
+        "fields": {
+          [fieldName]:date.toISOString().slice(0, 10)  // Changes with the needs of the Action
+        }
+  }], function(err, records) {
+    if (err) {
+      console.error(err);
+      return;
+    }});
+    }
    
   return (
     <div className='btn-container'>
@@ -83,7 +91,7 @@ export default function MainContent() {
                         <div className="project-input ">
                         <div className="input_value">
                         <input type="checkbox" name="" id="" checked={(tab.fields.complete == true)} 
-                                                             onChange={(e) => RecordHandler(e,tab.id,"complete") }/></div>
+                                                             onChange={(e) => RecordHandler(e,tab.id,"complete","checked") }/></div>
                         </div>
                       </div>
                       {/* Complete  end */}
@@ -100,7 +108,7 @@ export default function MainContent() {
                       {/* client  start */}
                       <div className="project-inner-shell">
                         <div className="project-input relative">
-                         <Select options={options} isMulti={true} className="move_up" onChange={(e) => RecordHandler} /> 
+                         <Select options={options} isMulti={true} className="move_up" /> 
                         </div>
                       </div>
                       {/* Cclient end */}
@@ -124,7 +132,9 @@ export default function MainContent() {
                        {/* kickoff date  start */}
                        <div className="project-inner-shell">
                         <div className="project-input">
-                         <DatePicker selected={(tab.fields["Due date"] == undefined)?"":new Date(tab.fields["Kickoff date"])} className="input_value"/>
+                         <DatePicker selected={(tab.fields["Kickoff date"] == undefined)?"":new Date(tab.fields["Kickoff date"])} className="input_value"
+                                    onChange={(date) => RecordHandleDates(date,tab.id,"Kickoff date")}
+                         />
                         </div>
                       </div>
                       {/*project lead end */}
@@ -132,7 +142,9 @@ export default function MainContent() {
                        {/* Due Date  start */}
                        <div className="project-inner-shell">
                         <div className="project-input">
-                            <DatePicker selected={(tab.fields["Due date"] == undefined)?"":new Date(tab.fields["Due date"])} className="input_value"/>
+                            <DatePicker selected={(tab.fields["Due date"] == undefined)?"":new Date(tab.fields["Due date"])} className="input_value" 
+                                        onChange={(date) => RecordHandleDates(date,tab.id,"Due date")}
+                            />
                             {console.log(tab.fields["Due date"])}
                         </div>
                       </div>
@@ -141,7 +153,7 @@ export default function MainContent() {
                        {/* Notes   start */}
                        <div className="project-inner-shell">
                         <div className="project-input">
-                        <input type="text" name="" id="" className="input_value" placeholder={tab.fields["Notes"]} />
+                        <input type="text" name="" id="" className="input_value" placeholder={tab.fields["Notes"] }  onChange={(e) => RecordHandler(e,tab.id,"Notes")}  />
                         </div>
                       </div>
                       {/*Notes  end */}
@@ -149,7 +161,8 @@ export default function MainContent() {
                        {/* project lead  start */}
                        <div className="project-inner-shell">
                         <div className="project-input">
-                        <input type="text" name="" id="" className="input_value" placeholder={tab.fields["Task"]} />
+                        <input type="text" name="" id="" className="input_value" placeholder={tab.fields["Task"]} 
+                                                                                 onChange={(e) => RecordHandler(e,tab.id,"Task")} />
                         </div>
                       </div>
                       {/*project lead end */}
