@@ -37,3 +37,9 @@ The Applications has Achieved the following challenges :
 ![](Images/Name_Field.png)
 
 
+#### Add new Records
+- Press the plus button at the button
+- New input area will apply and fill in the 
+- Press the Apply to make changes to your API
+
+  ![](Images/Add%20Records.png) 
